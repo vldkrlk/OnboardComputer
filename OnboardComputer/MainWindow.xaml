@@ -1,0 +1,53 @@
+<Window x:Class="OnboardComputer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Бортовий комп'ютер" Height="560" Width="680"
+        Background="#FFDCE8F5">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель керування -->
+        <GroupBox Grid.Row="0" Header="Панель керування" FontWeight="Bold" Padding="8">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <Button x:Name="btnStart" Content="Запустити двигун" Width="140" Height="30"
+                            Click="btnStart_Click"/>
+                    <Button x:Name="btnStop" Content="Зупинити двигун" Width="140" Height="30"
+                            Margin="10,0,0,0" Click="btnStop_Click"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <Label Content="Температура (°C):" Width="130" FontWeight="Normal"/>
+                    <TextBox x:Name="txtTemperature" Width="80" Height="24" FontWeight="Normal"/>
+                    <Label Content="Тиск масла (бар):" Width="125" Margin="15,0,0,0" FontWeight="Normal"/>
+                    <TextBox x:Name="txtPressure" Width="80" Height="24" FontWeight="Normal"/>
+                    <Button x:Name="btnCheck" Content="Перевірити" Width="110" Height="30"
+                            Margin="15,0,0,0" Background="DarkRed" Foreground="White"
+                            Click="btnCheck_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Панель приладів -->
+        <GroupBox Grid.Row="1" Header="Панель приладів" FontWeight="Bold" Margin="0,10,0,0" Padding="8">
+            <StackPanel Orientation="Horizontal">
+                <Ellipse x:Name="lampOverheat" Width="22" Height="22" Fill="Gray" Stroke="Black"/>
+                <Label Content="Перегрів" FontWeight="Normal"/>
+                <Ellipse x:Name="lampCheckEngine" Width="22" Height="22" Fill="Gray" Stroke="Black"
+                         Margin="20,0,0,0"/>
+                <Label Content="Check Engine" FontWeight="Normal"/>
+                <Label x:Name="lblFan" Content="Вентилятор: 40%" Margin="30,0,0,0" FontWeight="Normal"/>
+                <Label x:Name="lblPower" Content="Потужність: 100%" Margin="20,0,0,0" FontWeight="Normal"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Журнал подій -->
+        <GroupBox Grid.Row="2" Header="Журнал подій" FontWeight="Bold" Margin="0,10,0,0" Padding="5">
+            <ListBox x:Name="logListBox" FontWeight="Normal"/>
+        </GroupBox>
+    </Grid>
+</Window>
